@@ -6,7 +6,8 @@ import './user_service.dart';
 class UserServiceImpl implements UserService {
   final UserRepository _userRepository;
 
-  UserServiceImpl({required userRepository}) : _userRepository = userRepository;
+  UserServiceImpl({required UserRepository userRepository})
+      : _userRepository = userRepository;
 
   @override
   Future<User?> register(String email, String password) =>
