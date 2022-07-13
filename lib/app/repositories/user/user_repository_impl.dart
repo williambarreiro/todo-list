@@ -82,8 +82,10 @@ class UserRepositoryImpl implements UserRepository {
         loginMethods =
             await _firebaseAuth.fetchSignInMethodsForEmail(googleUser.email);
 
+        // Sem essa verificação a conta Google irá sobrescrever a conta já cadastrada
         if (loginMethods.contains('password')) {
-          throw AuthException(message: 'Você utilizou o e-mail para cadastro');
+          throw AuthException(
+              message: 'Você já utilizou este e-mail para cadastro');
         } else {
           final googleAuth = await googleUser.authentication;
           final firebaseCredential = GoogleAuthProvider.credential(
@@ -97,9 +99,7 @@ class UserRepositoryImpl implements UserRepository {
       print(e);
       print(s);
       if (e.code == 'account-exists-with-different-credential') {
-        throw AuthException(
-            message:
-                '''
+        throw AuthException(message: '''
           Login inválido. Você já está registrado com os seguintes provedores:
           ${loginMethods?.join(',')}
         ''');

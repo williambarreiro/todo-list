@@ -1,8 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_list/app/core/database/sqlite_adm_connection.dart';
+import 'package:todo_list/app/core/navigator/todo_list_navigator.dart';
 import 'package:todo_list/app/core/ui/todo_list_ui_config.dart';
 import 'package:todo_list/app/modules/auth/auth_module.dart';
+import 'package:todo_list/app/modules/home/home_module.dart';
 import 'package:todo_list/app/modules/splash/splash_page.dart';
 
 class AppWidget extends StatefulWidget {
@@ -18,7 +19,6 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   void initState() {
     super.initState();
-    FirebaseAuth auth = FirebaseAuth.instance;
     WidgetsBinding.instance.addObserver(sqliteAdmConnection);
   }
 
@@ -32,10 +32,12 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Todo List Provider',
-      initialRoute: '/login',
       theme: TodoListUiConfig.theme,
+      navigatorKey: TodoListNavigator.navigatorKey,
+      initialRoute: '/login',
       routes: {
         ...AuthModule().routers,
+        ...HomeModule().routers,
       },
       home: const SplashPage(),
     );
