@@ -34,7 +34,6 @@ class _AppWidgetState extends State<AppWidget> {
       title: 'Todo List Provider',
       theme: TodoListUiConfig.theme,
       navigatorKey: TodoListNavigator.navigatorKey,
-      initialRoute: '/login',
       routes: {
         ...AuthModule().routers,
         ...HomeModule().routers,
