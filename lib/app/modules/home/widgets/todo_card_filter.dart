@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_list/app/core/ui/theme_extensions.dart';
 
 class TodoCardFilter extends StatefulWidget {
-  const TodoCardFilter({Key? key}) : super(key: key);
+  const TodoCardFilter({super.key});
 
   @override
   State<TodoCardFilter> createState() => _TodoCardFilterState();

@@ -9,7 +9,7 @@ import '../../../services/user/user_service.dart';
 class HomeDrawer extends StatelessWidget {
   final nameVN = ValueNotifier<String>('');
 
-  HomeDrawer({Key? key}) : super(key: key);
+  HomeDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {

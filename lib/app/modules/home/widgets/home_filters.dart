@@ -3,7 +3,7 @@ import 'package:todo_list/app/core/ui/theme_extensions.dart';
 import 'package:todo_list/app/modules/home/widgets/todo_card_filter.dart';
 
 class HomeFilters extends StatefulWidget {
-  const HomeFilters({Key? key}) : super(key: key);
+  const HomeFilters({super.key});
 
   @override
   State<HomeFilters> createState() => _HomeFiltersState();
@@ -25,7 +25,7 @@ class _HomeFiltersState extends State<HomeFilters> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
+            children: const [
               TodoCardFilter(),
               TodoCardFilter(),
               TodoCardFilter(),
