@@ -20,7 +20,10 @@ class HomeModule extends TodoListModule {
                   TasksServiceImpl(tasksRepository: context.read()),
             ),
             ChangeNotifierProvider(
-              create: (context) => HomeController(tasksService: context.read()),
+              create: (context) => HomeController(
+                tasksService: context.read(),
+                userService: context.read(),
+              ),
             )
           ],
           routers: {

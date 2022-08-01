@@ -4,9 +4,11 @@ import 'package:todo_list/app/models/task_model.dart';
 import 'package:todo_list/app/models/total_tasks_model.dart';
 import 'package:todo_list/app/models/week_task_model.dart';
 import 'package:todo_list/app/services/tasks/tasks_service.dart';
+import 'package:todo_list/app/services/user/user_service.dart';
 
 class HomeController extends DefaultChangeNotifier {
   final TasksService _tasksService;
+  final UserService _userService;
   var filterSelected = TaskFilterEnum.today;
   TotalTasksModel? todayTotalTasks;
   TotalTasksModel? tomorrowTotalTasks;
@@ -17,8 +19,11 @@ class HomeController extends DefaultChangeNotifier {
   DateTime? selectedDay;
   bool showFinishedTasks = false;
 
-  HomeController({required TasksService tasksService})
-      : _tasksService = tasksService;
+  HomeController({
+    required TasksService tasksService,
+    required UserService userService,
+  })  : _tasksService = tasksService,
+        _userService = userService;
 
   Future<void> loadTotalTasks() async {
     final allTasks = await Future.wait([
@@ -113,5 +118,10 @@ class HomeController extends DefaultChangeNotifier {
   void showOrHideFinishedTasks() {
     showFinishedTasks = !showFinishedTasks;
     refreshPage();
+  }
+
+  void logout() async {
+    await _userService.logout();
+    await _tasksService.cleanDB();
   }
 }

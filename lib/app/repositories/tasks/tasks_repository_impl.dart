@@ -49,4 +49,10 @@ class TasksRepositoryImpl implements TasksRepository {
     await conn.rawUpdate(
         'update todo set finalizado = ? where id = ?', [finished, task.id]);
   }
+
+  @override
+  Future<void> cleanDB() async {
+    final conn = await _sqliteConnectionFactory.openConnection();
+    await conn.delete('todo');
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/app/core/ui/theme_extensions.dart';
+import 'package:todo_list/app/modules/home/home_controller.dart';
 
 import '../../../core/auth/auth_provider.dart';
 import '../../../core/ui/messages.dart';
@@ -93,7 +94,7 @@ class HomeDrawer extends StatelessWidget {
             title: const Text('Alterar Nome'),
           ),
           ListTile(
-            onTap: () => context.read<AuthProvider>().logout(),
+            onTap: () => context.read<HomeController>().logout(),
             title: const Text('Sair'),
           ),
         ],
