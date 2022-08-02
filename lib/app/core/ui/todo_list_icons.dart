@@ -35,4 +35,6 @@ class TodoListIcons {
       IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData filter =
       IconData(0xf0b0, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData trash =
+      IconData(0xf1f8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

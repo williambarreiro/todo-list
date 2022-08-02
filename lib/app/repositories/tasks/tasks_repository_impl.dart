@@ -51,6 +51,13 @@ class TasksRepositoryImpl implements TasksRepository {
   }
 
   @override
+  Future<void> deleteTask(TaskModel task) async {
+    final conn = await _sqliteConnectionFactory.openConnection();
+
+    await conn.rawDelete('delete from todo where id = ?', [task.id]);
+  }
+
+  @override
   Future<void> cleanDB() async {
     final conn = await _sqliteConnectionFactory.openConnection();
     await conn.delete('todo');

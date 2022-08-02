@@ -53,4 +53,7 @@ class TasksServiceImpl implements TasksService {
 
   @override
   Future<void> cleanDB() => _tasksRepository.cleanDB();
+
+  @override
+  Future<void> deleteTask(TaskModel task) => _tasksRepository.deleteTask(task);
 }
