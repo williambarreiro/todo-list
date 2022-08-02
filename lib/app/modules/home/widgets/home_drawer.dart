@@ -94,11 +94,35 @@ class HomeDrawer extends StatelessWidget {
             title: const Text('Alterar Nome'),
           ),
           ListTile(
-            onTap: () => context.read<HomeController>().logout(),
+            onTap: () => _logout(context),
             title: const Text('Sair'),
           ),
         ],
       ),
+    );
+  }
+
+  void _logout(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          title: const Text('Deseja sair?'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancelar'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                context.read<HomeController>().logout();
+              },
+              child: const Text('Confirmar'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

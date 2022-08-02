@@ -59,10 +59,9 @@ class Task extends StatelessWidget {
   }
 
   void _deleteTask(BuildContext context) {
-    final controller = context.read<HomeController>();
     showDialog(
       context: context,
-      builder: (context) {
+      builder: (_) {
         return AlertDialog(
           title: const Text('Deseja deletar a tarefa?'),
           actions: [
@@ -73,7 +72,7 @@ class Task extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                controller.deleteTask(model);
+                context.read<HomeController>().deleteTask(model);
               },
               child: const Text('Confirmar'),
             ),
