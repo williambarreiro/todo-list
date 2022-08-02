@@ -14,43 +14,39 @@ class Task extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
-          BoxShadow(color: Colors.grey),
-        ],
-      ),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.grey,
+              blurRadius: 1,
+            )
+          ]),
       margin: const EdgeInsets.symmetric(vertical: 5),
-      child: IntrinsicHeight(
-        child: ListTile(
-          contentPadding: const EdgeInsets.all(8),
-          leading: Checkbox(
-            value: model.finished,
-            onChanged: (value) =>
-                context.read<HomeController>().checkOrUncheckTask(model),
-          ),
-          title: Text(
-            model.description,
-            style: TextStyle(
-                decoration: model.finished ? TextDecoration.lineThrough : null),
-          ),
-          subtitle: Text(
-            dateFormat.format(model.dateTime),
-            style: TextStyle(
-                decoration: model.finished ? TextDecoration.lineThrough : null),
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: const BorderSide(width: 1),
-          ),
-          trailing: Padding(
-            padding: const EdgeInsets.only(right: 4),
-            child: IconButton(
-              onPressed: () => _deleteTask(context),
-              icon: const Icon(
-                TodoListIcons.trash,
-                size: 20,
-              ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(8),
+        leading: Checkbox(
+          value: model.finished,
+          onChanged: (value) =>
+              context.read<HomeController>().checkOrUncheckTask(model),
+        ),
+        title: Text(
+          model.description,
+          style: TextStyle(
+              decoration: model.finished ? TextDecoration.lineThrough : null),
+        ),
+        subtitle: Text(
+          dateFormat.format(model.dateTime),
+          style: TextStyle(
+              decoration: model.finished ? TextDecoration.lineThrough : null),
+        ),
+        trailing: Padding(
+          padding: const EdgeInsets.only(right: 4),
+          child: IconButton(
+            onPressed: () => _deleteTask(context),
+            icon: const Icon(
+              TodoListIcons.trash,
+              size: 20,
             ),
           ),
         ),
