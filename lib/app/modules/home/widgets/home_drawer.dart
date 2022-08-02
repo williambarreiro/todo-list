@@ -79,10 +79,10 @@ class HomeDrawer extends StatelessWidget {
                               Messages.of(context)
                                   .showError('Nome obrigatório');
                             } else {
+                              Navigator.of(context).pop();
                               await context
                                   .read<UserService>()
                                   .updateDisplayName(nameValue);
-                              Navigator.of(context).pop();
                             }
                           },
                           child: const Text('Alterar'),

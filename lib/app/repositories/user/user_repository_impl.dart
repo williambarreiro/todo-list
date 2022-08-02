@@ -94,6 +94,8 @@ class UserRepositoryImpl implements UserRepository {
               await _firebaseAuth.signInWithCredential(firebaseCredential);
           return userCredential.user;
         }
+      } else {
+        throw AuthException(message: 'Login não realizado');
       }
     } on FirebaseAuthException catch (e, s) {
       print(e);
