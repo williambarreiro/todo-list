@@ -2,8 +2,8 @@
   <img alt="Todo" title="Todo" src="assets\logo.png" height="180"/>
 </h1>
 
-<p align="center">A simple Todo List app made with Flutter.</p>
-<p align="center">💙</p>
+<p align="center">A simple Todo List app made with Flutter. 💙</p>
+<p align="center">The app uses SQLite Database, Provider for dependency injection and state management, and Firebase for authentication.</p>
 
 <p align="center">
  <a href="#-screenshots">Screenshots</a> •
